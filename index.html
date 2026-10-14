@@ -1,10 +1,317 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mon espace interactif</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        header {
+            background: #172554;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #cbd5e1;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .rubriques {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .rubrique {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .rubrique:hover {
+            transform: translateY(-4px);
+        }
+
+        .bouton-rubrique {
+            width: 100%;
+            border: none;
+            background: white;
+            color: #1e40af;
+            padding: 22px 15px;
+            font-size: 17px;
+            font-weight: bold;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bouton-rubrique:hover {
+            background: #eff6ff;
+        }
+
+        .fleche {
+            font-size: 20px;
+            transition: transform 0.2s;
+        }
+
+        .bouton-rubrique[aria-expanded="true"] .fleche {
+            transform: rotate(180deg);
+        }
+
+        .contenu {
+            display: none;
+            padding: 0 18px 22px;
+            line-height: 1.7;
+            color: #475569;
+        }
+
+        .contenu.ouvert {
+            display: block;
+        }
+
+        footer {
+            background: #172554;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 800px) {
+            .rubriques {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .rubriques {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
 <body>
 
-<h1>My First Heading</h1>
+    <header>
+        <h1>Mon espace interactif</h1>
+        <p>Clique sur une rubrique pour découvrir son contenu.</p>
+    </header>
 
-<p>My first paragraph.</p>
+    <main>
+        <div class="rubriques">
+
+            <div class="rubrique">
+                <button class="bouton-rubrique"
+                        aria-expanded="false"
+                        aria-controls="contenu1">
+                    📌 1. Présentation
+                    <span class="fleche">⌄</span>
+                </button>
+                <div class="contenu" id="contenu1">
+                    <p>Bienvenue dans mon espace ! Cette rubrique permet de présenter le site et ses objectifs.</p>
+                </div>
+            </div>
+
+            <div class="rubrique">
+                <button class="bouton-rubrique"
+                        aria-expanded="false"
+                        aria-controls="contenu2">
+                    👤 2. À propos
+                    <span class="fleche">⌄</span>
+                </button>
+                <div class="contenu" id="contenu2">
+                    <p>Découvre ici des informations sur moi, mon parcours et mes centres d'intérêt.</p>
+                </div>
+            </div>
+
+            <div class="rubrique">
+                <button class="bouton-rubrique"
+                        aria-expanded="false"
+                        aria-controls="contenu3">
+                    💼 3. Mes projets
+                    <span class="fleche">⌄</span>
+                </button>
+                <div class="contenu" id="contenu3">
+                    <p>Retrouve ici mes projets, mes idées et les réalisations que je souhaite partager.</p>
+                </div>
+            </div>
+
+            <div class="rubrique">
+                <button class="bouton-rubrique"
+                        aria-expanded="false"
+                        aria-controls="contenu4">
+                    🎯 4. Mes objectifs
+                    <span class="fleche">⌄</span>
+                </button>
+                <div class="contenu" id="contenu4">
+                    <p>Cette rubrique présente mes objectifs et les étapes que je prévois pour les atteindre.</p>
+                </div>
+            </div>
+
+            <div class="rubrique">
+                <button class="bouton-rubrique"
+                        aria-expanded="false"
+                        aria-controls="contenu5">
+                    📚 5. Ressources
+                    <span class="fleche">⌄</span>
+                </button>
+                <div class="contenu" id="contenu5">
+                    <p>Consulte des informations, des documents et des ressources utiles.</p>
+                </div>
+            </div>
+
+            <div class="rubrique">
+                <button class="bouton-rubrique"
+                        aria-expanded="false"
+                        aria-controls="contenu6">
+                    🖼️ 6. Galerie
+                    <span class="fleche">⌄</span>
+                </button>
+                <div class="contenu" id="contenu6">
+                    <p>Un espace pour afficher des photos, des illustrations et des images.</p>
+                </div>
+            </div>
+
+            <div class="rubrique">
+                <button class="bouton-rubrique"
+                        aria-expanded="false"
+                        aria-controls="contenu7">
+                    📰 7. Actualités
+                    <span class="fleche">⌄</span>
+                </button>
+                <div class="contenu" id="contenu7">
+                    <p>Découvre les dernières nouveautés et les informations importantes.</p>
+                </div>
+            </div>
+
+            <div class="rubrique">
+                <button class="bouton-rubrique"
+                        aria-expanded="false"
+                        aria-controls="contenu8">
+                    🎨 8. Créations
+                    <span class="fleche">⌄</span>
+                </button>
+                <div class="contenu" id="contenu8">
+                    <p>Retrouve mes créations artistiques, numériques ou personnelles.</p>
+                </div>
+            </div>
+
+            <div class="rubrique">
+                <button class="bouton-rubrique"
+                        aria-expanded="false"
+                        aria-controls="contenu9">
+                    🛠️ 9. Services
+                    <span class="fleche">⌄</span>
+                </button>
+                <div class="contenu" id="contenu9">
+                    <p>Présente ici les services, les compétences ou les solutions proposés.</p>
+                </div>
+            </div>
+
+            <div class="rubrique">
+                <button class="bouton-rubrique"
+                        aria-expanded="false"
+                        aria-controls="contenu10">
+                    ⭐ 10. Favoris
+                    <span class="fleche">⌄</span>
+                </button>
+                <div class="contenu" id="contenu10">
+                    <p>Une sélection de mes sites, activités, livres ou contenus préférés.</p>
+                </div>
+            </div>
+
+            <div class="rubrique">
+                <button class="bouton-rubrique"
+                        aria-expanded="false"
+                        aria-controls="contenu11">
+                    ❓ 11. FAQ
+                    <span class="fleche">⌄</span>
+                </button>
+                <div class="contenu" id="contenu11">
+                    <p>Retrouve ici les réponses aux questions les plus fréquemment posées.</p>
+                </div>
+            </div>
+
+            <div class="rubrique">
+                <button class="bouton-rubrique"
+                        aria-expanded="false"
+                        aria-controls="contenu12">
+                    ✉️ 12. Contact
+                    <span class="fleche">⌄</span>
+                </button>
+                <div class="contenu" id="contenu12">
+                    <p>Cette rubrique pourra contenir des informations de contact ou un formulaire.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mon espace interactif - Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        const boutons = document.querySelectorAll(".bouton-rubrique");
+
+        boutons.forEach(function(bouton) {
+            bouton.addEventListener("click", function() {
+
+                const contenu = document.getElementById(
+                    bouton.getAttribute("aria-controls")
+                );
+
+                const estOuvert =
+                    bouton.getAttribute("aria-expanded") === "true";
+
+                // Fermer toutes les rubriques
+                boutons.forEach(function(autreBouton) {
+                    autreBouton.setAttribute("aria-expanded", "false");
+
+                    const autreContenu = document.getElementById(
+                        autreBouton.getAttribute("aria-controls")
+                    );
+
+                    autreContenu.classList.remove("ouvert");
+                });
+
+                // Ouvrir la rubrique sélectionnée si elle était fermée
+                if (!estOuvert) {
+                    bouton.setAttribute("aria-expanded", "true");
+                    contenu.classList.add("ouvert");
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
