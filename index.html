@@ -7,115 +7,232 @@
     <title>L’éthique ne se négocie pas. Informez-vous avant de signer.</title>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f1f5f9;
-            color: #1e293b;
-        }
 
-        header {
-            background: #172554;
-            color: white;
-            text-align: center;
-            padding: 35px 20px;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        header h1 {
-            margin-bottom: 10px;
-        }
+html {
+    width: 100%;
+    min-height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+}
 
-        header p {
-            color: #cbd5e1;
-        }
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    color: #222222;
+    line-height: 1.5;
+}
 
-        main {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
 
-        .rubriques {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+header {
+    width: 100%;
+    padding: 25px 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dddddd;
+    text-align: center;
+}
 
-        .rubrique {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            transition: transform 0.2s;
-        }
+header h1 {
+    font-size: clamp(22px, 3vw, 32px);
+    margin-bottom: 8px;
+}
 
-        .rubrique:hover {
-            transform: translateY(-4px);
-        }
+header p {
+    font-size: 15px;
+    color: #666666;
+}
 
-        .bouton-rubrique {
-            width: 100%;
-            border: none;
-            background: white;
-            color: #1e40af;
-            padding: 22px 15px;
-            font-size: 17px;
-            font-weight: bold;
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
 
-        .bouton-rubrique:hover {
-            background: #eff6ff;
-        }
+main {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
 
-        .fleche {
-            font-size: 20px;
-            transition: transform 0.2s;
-        }
 
-        .bouton-rubrique[aria-expanded="true"] .fleche {
-            transform: rotate(180deg);
-        }
+.rubriques {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
 
-        .contenu {
-            display: none;
-            padding: 0 18px 22px;
-            line-height: 1.7;
-            color: #475569;
-        }
+/* Une rubrique par ligne */
 
-        .contenu.ouvert {
-            display: block;
-        }
+.rubrique {
+    display: block;
+    width: 100%;
+    background-color: #ffffff;
+    border: none;
+    border-bottom: 1px solid #e5e5e5;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+}
 
-        footer {
-            background: #172554;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-        }
 
-        @media (max-width: 800px) {
-            .rubriques {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+.bouton-rubrique {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-        @media (max-width: 520px) {
-            .rubriques {
-                grid-template-columns: 1fr;
-            }
-        }
+    width: 100%;
+    min-height: 60px;
+    padding: 16px 24px;
+
+    border: none;
+    border-radius: 0;
+    background-color: #ffffff;
+
+    color: #222222;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Survol à la souris */
+
+.bouton-rubrique:hover {
+    background-color: #eeeeee;
+}
+
+/* Rubrique ouverte */
+
+.bouton-rubrique[aria-expanded="true"] {
+    background-color: #eaeaea;
+}
+
+/* Focus au clavier */
+
+.bouton-rubrique:focus-visible {
+    outline: 2px solid #555555;
+    outline-offset: -3px;
+}
+
+
+.fleche {
+    flex-shrink: 0;
+    margin-left: 15px;
+    font-size: 20px;
+    transition: transform 0.2s ease;
+}
+
+.bouton-rubrique[aria-expanded="true"] .fleche {
+    transform: rotate(180deg);
+}
+
+
+.contenu {
+    display: none;
+    width: 100%;
+    padding: 20px 24px;
+
+    background-color: #f9f9f9;
+    color: #444444;
+
+    font-size: 15px;
+    line-height: 1.7;
+
+    overflow-wrap: anywhere;
+}
+
+/* Affichage du contenu ouvert */
+
+.contenu.ouvert {
+    display: block;
+}
+
+
+footer {
+    width: 100%;
+    padding: 20px;
+    background-color: #ffffff;
+    border-top: 1px solid #dddddd;
+
+    color: #666666;
+    font-size: 14px;
+    text-align: center;
+}
+
+
+@media (max-width: 768px) {
+
+    header {
+        padding: 22px 15px;
+    }
+
+    .bouton-rubrique {
+        min-height: 58px;
+        padding: 16px 20px;
+        font-size: 16px;
+    }
+
+    .contenu {
+        padding: 18px 20px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    header {
+        padding: 20px 12px;
+    }
+
+    header h1 {
+        font-size: 23px;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    .bouton-rubrique {
+        min-height: 56px;
+        padding: 15px 14px;
+        font-size: 15px;
+    }
+
+    .fleche {
+        margin-left: 10px;
+    }
+
+    .contenu {
+        padding: 15px 14px;
+        font-size: 14px;
+    }
+
+    footer {
+        padding: 18px 12px;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}
     </style>
 </head>
 
