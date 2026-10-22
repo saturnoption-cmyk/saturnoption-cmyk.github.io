@@ -704,6 +704,34 @@ footer {
                 }
             });
         });
+        
+const champRecherche = document.getElementById("recherche-entreprise");
+const rubriques = document.querySelectorAll(".rubrique");
+
+champRecherche.addEventListener("input", function () {
+    const recherche = champRecherche.value
+        .trim()
+        .toLocaleLowerCase("fr");
+
+    rubriques.forEach(function (rubrique) {
+        const texte = rubrique.textContent
+            .toLocaleLowerCase("fr");
+
+        const correspond = texte.includes(recherche);
+
+        rubrique.style.display = correspond ? "" : "none";
+
+        // Fermer les menus lorsque la recherche change
+        if (!correspond) {
+            const bouton = rubrique.querySelector(".bouton-rubrique");
+            const contenu = rubrique.querySelector(".contenu");
+
+            bouton.setAttribute("aria-expanded", "false");
+            contenu.classList.remove("ouvert");
+        }
+    });
+});
+        
     </script>
 
 </body>
