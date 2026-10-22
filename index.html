@@ -352,6 +352,54 @@ footer {
         color: #800080
     }
 }
+        
+/* BARRE DE RECHERCHE */
+
+.recherche {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+#recherche-entreprise {
+    width: 100%;
+    padding: 16px 50px 16px 20px;
+
+    background: rgba(17, 17, 17, 0.90);
+    color: #ffffff;
+
+    border: 1px solid #484848;
+    border-radius: 10px;
+
+    font-family: inherit;
+    font-size: 16px;
+
+    outline: none;
+    transition: border-color 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+#recherche-entreprise::placeholder {
+    color: #aaaaaa;
+}
+
+#recherche-entreprise:focus {
+    border-color: #aaaaaa;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.10);
+}
+
+.icone-recherche {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    color: #aaaaaa;
+    font-size: 27px;
+    pointer-events: none;
+}
+        
     </style>
 </head>
 
@@ -365,6 +413,16 @@ footer {
 
     <main>
         <div class="rubriques">
+            
+<div class="recherche">
+    <input
+        type="search"
+        id="recherche-entreprise"
+        placeholder="Rechercher une entreprise..."
+        aria-label="Rechercher une entreprise"
+    >
+    <span class="icone-recherche">⌕</span>
+</div>
 
             <div class="rubrique">
                 <button class="bouton-rubrique"
